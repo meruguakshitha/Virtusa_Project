@@ -1,0 +1,9 @@
+<h2>Loan Details</h2>
+<div *ngIf="loan">
+  <p><b>Client:</b> {{loan.clientName}}</p>
+  <p><b>Type:</b> {{loan.loanType}}</p>
+  <p><b>Amount:</b> {{loan.requestedAmount}}</p>
+  <p><b>Proposed Rate:</b> {{loan.proposedInterestRate}}</p>
+  <p><b>Tenure:</b> {{loan.tenureMonths}} months</p>
+  <p><b>Status:</b> {{loan.status}}</p>
+</div>

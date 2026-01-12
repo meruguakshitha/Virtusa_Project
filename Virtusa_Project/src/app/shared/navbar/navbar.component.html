@@ -1,0 +1,12 @@
+<nav class="navbar" *ngIf="auth.isLoggedIn()">
+
+  <a routerLink="/loans">Loans</a>
+
+  <!-- ADMIN ONLY -->
+  <a *ngIf="auth.isAdmin()" routerLink="/admin/approvals">Approvals</a>
+  <a *ngIf="auth.isAdmin()" routerLink="/admin/users">Users</a>
+
+  <span class="spacer"></span>
+
+  <button (click)="logout()">Logout</button>
+</nav>

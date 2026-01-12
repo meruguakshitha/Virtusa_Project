@@ -1,0 +1,47 @@
+<h2>Apply Loan</h2>
+
+<form [formGroup]="loanForm" (ngSubmit)="submit()">
+
+  <div class="row">
+    <input placeholder="Client Name *" formControlName="clientName">
+    <select formControlName="loanType">
+      <option value="">Select Loan Type *</option>
+      <option value="Home">Home</option>
+      <option value="Personal">Personal</option>
+      <option value="WorkingCapital">Working Capital</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <input type="number" placeholder="Loan Amount *" formControlName="requestedAmount">
+    <input type="number" placeholder="Interest Rate (%) *" formControlName="proposedInterestRate">
+    <input type="number" placeholder="Tenure (Months) *" formControlName="tenureMonths">
+  </div>
+
+  <h3>Financials</h3>
+
+  <!-- 🔥 IMPORTANT -->
+  <div class="row" formGroupName="financials">
+    <input type="number" placeholder="Revenue *" formControlName="revenue">
+    <input type="number" placeholder="EBITDA *" formControlName="ebitda">
+    <select formControlName="rating">
+      <option value="">Rating *</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+  </div>
+
+  <div class="emi-box" *ngIf="emi > 0">
+  <strong>Estimated EMI:</strong>
+  <span>₹ {{ emi | number }}</span>
+</div>
+
+
+  <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <button type="submit" [disabled]="submitting">
+    {{ submitting ? 'Submitting...' : 'Submit Loan' }}
+  </button>
+
+</form>

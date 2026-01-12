@@ -1,0 +1,89 @@
+<mat-card>
+
+  <div style="display:flex; align-items:center; margin-bottom:16px">
+    <h2 style="margin:0">Loan Requests</h2>
+    <span style="flex:1"></span>
+
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/loans/create">
+      Create Loan
+    </button>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="loans"
+    class="mat-elevation-z1"
+    style="width:100%">
+
+    <!-- CLIENT NAME -->
+    <ng-container matColumnDef="clientName">
+      <th mat-header-cell *matHeaderCellDef>Client</th>
+      <td mat-cell *matCellDef="let loan">
+        {{ loan.clientName }}
+      </td>
+    </ng-container>
+
+    <!-- LOAN TYPE -->
+    <ng-container matColumnDef="loanType">
+      <th mat-header-cell *matHeaderCellDef>Loan Type</th>
+      <td mat-cell *matCellDef="let loan">
+        {{ loan.loanType }}
+      </td>
+    </ng-container>
+
+    <!-- AMOUNT -->
+    <ng-container matColumnDef="requestedAmount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let loan">
+        {{ loan.requestedAmount | number }}
+      </td>
+    </ng-container>
+
+    <!-- STATUS -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let loan">
+        <mat-chip
+          selected
+          [color]="
+            loan.status === 'APPROVED' ? 'primary' :
+            loan.status === 'REJECTED' ? 'warn' :
+            'accent'
+          ">
+          {{ loan.status }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- ACTIONS -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let loan">
+
+        <button
+          mat-button
+          color="primary"
+          [routerLink]="['/loans', loan.id]">
+          View
+        </button>
+
+        <button
+          mat-button
+          color="accent"
+          *ngIf="loan.status === 'DRAFT'"
+          [routerLink]="['/loans', loan.id, 'edit']">
+          Edit
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+</mat-card>

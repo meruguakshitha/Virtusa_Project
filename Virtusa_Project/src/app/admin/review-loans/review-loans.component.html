@@ -1,0 +1,53 @@
+<h2>Review Loans</h2>
+
+<table class="admin-table" *ngIf="!loading">
+  <thead>
+    <tr>
+      <th>Client Name</th>
+      
+      <th>Amount</th>
+      <th>Tenure</th>
+      <th>Type</th>
+      <th>EMI</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let loan of loans">
+     <td>{{ loan.clientName }}</td>
+
+<td>₹ {{ loan.requestedAmount }}</td>
+<td>{{ loan.tenureMonths }} months</td>
+<td>{{ loan.loanType }}</td>
+<td>
+  ₹ {{ (loan.requestedAmount * loan.proposedInterestRate / 100 / 12).toFixed(0) }}
+</td>
+
+
+      <td>
+        <span class="badge"
+          [ngClass]="loan.status.toLowerCase()">
+          {{ loan.status }}
+        </span>
+      </td>
+
+      <td>
+        <button
+          class="btn approve"
+          *ngIf="loan.status === 'DRAFT'"
+          (click)="approve(loan)">
+          Approve
+        </button>
+
+        <button
+          class="btn reject"
+          *ngIf="loan.status === 'DRAFT'"
+          (click)="reject(loan)">
+          Reject
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

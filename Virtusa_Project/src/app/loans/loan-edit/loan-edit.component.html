@@ -1,0 +1,9 @@
+<h2>Edit Loan</h2>
+<form [formGroup]="loanForm" (ngSubmit)="updateLoan()">
+  <input formControlName="clientName" placeholder="Client Name">
+  <input formControlName="loanType" placeholder="Loan Type">
+  <input formControlName="requestedAmount" type="number" placeholder="Requested Amount">
+  <input formControlName="proposedInterestRate" type="number" placeholder="Proposed Interest Rate">
+  <input formControlName="tenureMonths" type="number" placeholder="Tenure (Months)">
+  <button type="submit">Update</button>
+</form>
