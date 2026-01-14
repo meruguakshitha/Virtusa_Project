@@ -1,0 +1,70 @@
+<h1 class="page-title">Manage Users</h1>
+
+<h3 class="section-title">Create New User</h3>
+
+<div class="create-user-box">
+  <div class="form-grid">
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="newUser.email" />
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="newUser.password" />
+
+    <select [(ngModel)]="newUser.role">
+      <option value="USER">USER</option>
+      <option value="ADMIN">ADMIN</option>
+    </select>
+
+    <button class="btn-create" (click)="createUser()">
+      Create
+    </button>
+  </div>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+
+      <!-- ✅ STATUS COLUMN (DRAFT / APPROVED) -->
+      <td>
+        <span
+          class="badge"
+          [ngClass]="user.active ? 'approved' : 'draft'">
+          {{ user.active ? 'APPROVED' : 'DRAFT' }}
+        </span>
+      </td>
+
+      <!-- ✅ ACTION COLUMN -->
+      <td>
+        <button
+          class="btn-action approve"
+          *ngIf="!user.active"
+          (click)="approveUser(user)">
+          Approve
+        </button>
+
+        <button
+          class="btn-action reject"
+          *ngIf="user.active"
+          (click)="rejectUser(user)">
+          Reject
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

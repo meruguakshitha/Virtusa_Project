@@ -1,0 +1,72 @@
+
+
+
+
+<h2>Review Loans</h2>
+
+<div *ngIf="loading" class="loading">
+  Loading loans...
+</div>
+
+<table class="admin-table" *ngIf="!loading && loans.length > 0">
+  <thead>
+    <tr>
+      <th>Client Name</th>
+      <th>Amount</th>
+      <th>Tenure</th>
+      <th>Type</th>
+      <th>EMI</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let loan of loans">
+      <td>{{ loan.clientName }}</td>
+      <td>₹ {{ loan.requestedAmount | number }}</td>
+      <td>{{ loan.tenureMonths }} months</td>
+      <td>{{ loan.loanType }}</td>
+
+      <td>
+        ₹ {{
+          (loan.requestedAmount * loan.proposedInterestRate / 100 / 12)
+            | number:'1.0-0'
+        }}
+      </td>
+
+      <td>
+        <span class="badge" [ngClass]="loan.status.toLowerCase()">
+          {{ loan.status }}
+        </span>
+      </td>
+
+      <td>
+        <button
+        class="review"
+          *ngIf="loan.status === 'SUBMITTED'"
+          (click)="moveToReview(loan.id)">
+          Move to Review
+        </button>
+
+        <button
+        class="approve"
+          *ngIf="loan.status === 'UNDER_REVIEW'"
+          (click)="approve(loan.id)">
+          Approve
+        </button>
+
+        <button
+        class="reject"
+          *ngIf="loan.status === 'UNDER_REVIEW'"
+          (click)="reject(loan.id)">
+          Reject
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && loans.length === 0" class="no-data">
+  No loans found
+</div>

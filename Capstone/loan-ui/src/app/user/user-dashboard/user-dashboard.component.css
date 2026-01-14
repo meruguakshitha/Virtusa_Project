@@ -1,0 +1,97 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  background: #f4f6f8;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  background: #0f172a;
+  color: #fff;
+  padding: 20px;
+}
+
+.logo {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 15px;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+.logout-btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 10px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+ .user-layout {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* 🔹 Top bar */
+.top-bar {
+  height: 60px;
+  background: #0f172a;
+  color: white;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 🔹 Logout button */
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* 🔹 Content area */
+.page-content {
+  padding: 24px;
+}

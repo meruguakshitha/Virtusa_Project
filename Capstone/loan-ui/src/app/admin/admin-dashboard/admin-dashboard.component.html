@@ -1,0 +1,24 @@
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>LoanSystem</h2>
+
+    <nav>
+      <a routerLink="/admin/dashboard">Dashboard</a>
+      <a routerLink="/admin/review-loans">Review Loans</a>
+      <a routerLink="/admin/manage-users">Manage Users</a>
+
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

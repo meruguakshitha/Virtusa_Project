@@ -1,0 +1,33 @@
+<h2>My Loans</h2>
+
+<div *ngIf="loading">Loading loans...</div>
+
+<table *ngIf="!loading && loans.length > 0" class="loan-table">
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Tenure</th>
+      <th>Type</th>
+      <th>EMI</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let loan of loans">
+      <td>₹ {{ loan.requestedAmount | number }}</td>
+      <td>{{ loan.tenureMonths }} months</td>
+      <td>{{ loan.loanType }}</td>
+      <td>₹ {{ loan.emi | number }}</td>
+      <td>
+        <span class="status" [class.draft]="loan.status === 'DRAFT'">
+          {{ loan.status }}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && loans.length === 0">
+  No loans found
+</div>
