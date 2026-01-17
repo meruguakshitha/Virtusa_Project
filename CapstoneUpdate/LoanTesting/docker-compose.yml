@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    ports:
+      - "27017:27017"
+
+  backend:
+    image: loan-backend
+    container_name: loan-backend-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
