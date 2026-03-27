@@ -1,0 +1,9 @@
+.git
+.gitignore
+.idea
+.mvn
+src
+*.log
+
+# ❌ DO NOT ignore target
+# ❌ DO NOT ignore *.jar

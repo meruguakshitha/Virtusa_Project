@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/loan_pricing_db
+
+kafka:
+  enabled: false
+
+jwt:
+  secret: my-super-secret-key-123456789012345
+  expiration: 3600000
